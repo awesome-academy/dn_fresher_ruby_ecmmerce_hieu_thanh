@@ -27,3 +27,15 @@ RSpec.shared_examples "share check product presence" do |action|
     end
   end
 end
+
+RSpec.shared_examples "share check login admin" do
+  before {get :index}
+
+  it "redirect to login page" do
+    should redirect_to login_path
+  end
+
+  it "display flash danger don't permission" do
+    expect(flash[:danger]).to eq("You dont permission")
+  end
+end
